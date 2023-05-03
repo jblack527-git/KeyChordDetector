@@ -15,7 +15,7 @@ public class DegreeController {
     public static void printDegree(Degree degree) {
         System.out.println(degree.note
                 + " " + degree.scale
-                + " " + degree.chords.toString());
+                + " | " + degree.chords.toString().substring(1, degree.chords.toString().length() - 1));
     }
 
     public static Degree getDegree(String note, String scale, List<Degree> degreeList) throws Exception {
@@ -38,7 +38,6 @@ public class DegreeController {
         List<Degree> degreeList = new ArrayList<>();
         for (Map entry : stringList) {
             List<Chord> chordList = new ArrayList<>();
-            // iterating through positions array
             for(String position : POSITIONS) {
                 if (entry.containsKey(position)) {
                     chordList.add(new Chord(RomanToIntegerConverter.convertRomanToInt(position), entry.get(position).toString()));
