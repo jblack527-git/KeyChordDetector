@@ -37,6 +37,23 @@ public class DegreeController {
         throw new Exception("Degree not found");
     }
 
+    public static List<Degree> getDegreesFromChords(List<String> chordList, List<Degree> degreeList) {
+        List<Degree> degreesContainingChords = new ArrayList<>();
+        for (Degree degree : degreeList) {
+            int chordsPresent = 0;
+            for (String chord : chordList) {
+                if (degree.chords.contains(chord)) {
+                    chordsPresent ++;
+                }
+            }
+            if (chordsPresent == chordList.stream().count()) {
+                degreesContainingChords.add(degree);
+            }
+        }
+
+        return degreesContainingChords;
+    }
+
     public static void printDegreeList(List<Degree> degreeList) {
         for (Degree degree : degreeList) {
             printDegree(degree);
