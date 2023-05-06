@@ -50,8 +50,10 @@ public class MenuController {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose a note: ");
+        printNoteList();
         String note = scanner.next();
         System.out.println("Choose a scale: ");
+        printScaleList();
         String scale = scanner.next();
         String capScale = scale.substring(0, 1).toUpperCase() + scale.substring(1).toLowerCase();
         printDegree(getDegree(note, capScale, degreeList));

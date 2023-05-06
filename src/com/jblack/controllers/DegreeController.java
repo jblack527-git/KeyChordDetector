@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static com.jblack.objects.Degree.getNoteList;
+import static com.jblack.objects.Degree.getScaleList;
 import static com.jblack.utils.FileToListConverter.fileToList;
 
 public class DegreeController {
@@ -41,6 +43,14 @@ public class DegreeController {
         for (Degree degree : degreeList) {
             printDegree(degree);
         }
+    }
+
+    public static void printNoteList() {
+        System.out.println(getNoteList());
+    }
+
+    public static void printScaleList() {
+        System.out.println(getScaleList());
     }
 
     public static List<Degree> initialiseDegreeList() throws IOException {
