@@ -24,6 +24,11 @@ public class DegreeController {
 
     public static Degree getDegree(String note, String scale, List<Degree> degreeList) throws Exception {
         for (Degree degree : degreeList) {
+            if (degree.note.contains("#") || degree.note.contains("b")) {
+                if (degree.note.contains(note)) {
+                    return degree;
+                }
+            }
             if (degree.note.equals(note) && degree.scale.equals(scale)) {
                 return degree;
             }
