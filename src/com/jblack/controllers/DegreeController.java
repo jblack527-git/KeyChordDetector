@@ -4,10 +4,14 @@ import com.jblack.objects.Chord;
 import com.jblack.objects.Degree;
 import com.jblack.utils.RomanToIntegerConverter;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import static com.jblack.utils.FileToListConverter.fileToList;
 
 public class DegreeController {
     private static final List<String> POSITIONS = Arrays.asList("I", "II", "III", "IV", "V", "VI", "VII");
@@ -21,7 +25,7 @@ public class DegreeController {
     public static Degree getDegree(String note, String scale, List<Degree> degreeList) throws Exception {
         for (Degree degree : degreeList) {
             if (degree.note.contains("#") || degree.note.contains("b")) {
-                if (degree.note.contains(note)) {
+                if (degree.note.contains(note) && degree.scale.equals(scale)) {
                     return degree;
                 }
             }
@@ -39,7 +43,13 @@ public class DegreeController {
         }
     }
 
-    public static List<Degree> createDegreeList(List<Map<String, String>> stringList) {
+    public static List<Degree> initialiseDegreeList() throws IOException {
+        File chordsFile = new File("src/com/jblack/resources/chords_dataset.csv");
+        List<Map<String, String>> stringList = fileToList(chordsFile);
+        return createDegreeList(stringList);
+    }
+
+    private static List<Degree> createDegreeList(List<Map<String, String>> stringList) {
         List<Degree> degreeList = new ArrayList<>();
         for (Map entry : stringList) {
             List<Chord> chordList = new ArrayList<>();
