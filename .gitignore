@@ -2,7 +2,7 @@
 *.class
 
 # Config files
-.xml
+.iml
 
 # Log file
 *.log
