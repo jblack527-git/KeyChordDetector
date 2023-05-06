@@ -67,6 +67,7 @@ public class Main {
         System.out.println("Choose a scale: ");
         String scale = scanner.next();
         String capScale = scale.substring(0, 1).toUpperCase() + scale.substring(1).toLowerCase();
-        printDegree(getDegree(note.toUpperCase(), capScale, degreeList));
+        printDegree(getDegree(note, capScale, degreeList));
+        System.out.println();
     }
 }
