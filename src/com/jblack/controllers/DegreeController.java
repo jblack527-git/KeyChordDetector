@@ -7,17 +7,15 @@ import com.jblack.utils.RomanToIntegerConverter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static com.jblack.objects.Chord.getPositionList;
 import static com.jblack.objects.Degree.getNoteList;
 import static com.jblack.objects.Degree.getScaleList;
 import static com.jblack.utils.FileToListConverter.fileToList;
 
 public class DegreeController {
-    private static final List<String> POSITIONS = Arrays.asList("I", "II", "III", "IV", "V", "VI", "VII");
-
     public static void printDegree(Degree degree) {
         System.out.println(degree.note
                 + " " + degree.scale
@@ -63,7 +61,7 @@ public class DegreeController {
         List<Degree> degreeList = new ArrayList<>();
         for (Map entry : stringList) {
             List<Chord> chordList = new ArrayList<>();
-            for(String position : POSITIONS) {
+            for(String position : getPositionList()) {
                 if (entry.containsKey(position)) {
                     chordList.add(new Chord(RomanToIntegerConverter.convertRomanToInt(position), entry.get(position).toString()));
                 }
