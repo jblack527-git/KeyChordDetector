@@ -32,9 +32,12 @@ public class MenuController {
             try {
                 option = scanner.nextInt();
                 switch (option) {
-                    case 1: printScales(degreeList); break;
-                    case 2: getScale(degreeList); break;
-                    case 3: getScalesFromChords(degreeList); break;
+                    case 1: printScales(degreeList);
+                    break;
+                    case 2: getScale(degreeList);
+                    break;
+                    case 3: getScalesFromChords(degreeList);
+                    break;
                     case 4: exit(0);
                 }
             }
