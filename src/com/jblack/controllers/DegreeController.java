@@ -37,8 +37,8 @@ public class DegreeController {
         throw new Exception("Degree not found");
     }
 
-    public static List<Degree> getDegreesFromChords(List<String> chordList, List<Degree> degreeList) {
-        List<Degree> degreesContainingChords = new ArrayList<>();
+    public static List<String> getDegreesFromChords(List<String> chordList, List<Degree> degreeList) {
+        List<String> degreesContainingChords = new ArrayList<>();
         for (Degree degree : degreeList) {
             int chordsPresent = 0;
             for (String chord : chordList) {
@@ -54,8 +54,8 @@ public class DegreeController {
                     }
                 }
             }
-            if (chordsPresent == chordList.stream().count()) {
-                degreesContainingChords.add(degree);
+            if (chordsPresent == chordList.size()) {
+                degreesContainingChords.add(degree.note + " " + degree.scale);
             }
         }
 
