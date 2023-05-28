@@ -43,6 +43,12 @@ public class DegreeController {
             int chordsPresent = 0;
             for (String chord : chordList) {
                 for (Chord degreeChord : degree.chords) {
+                    if (degreeChord.chord.contains("/")) {
+                        var accidentals = degreeChord.chord.split("/");
+                        if (accidentals[0].equals(chord) || accidentals[1].equals(chord)) {
+                            chordsPresent++;
+                        }
+                    }
                     if (degreeChord.chord.equals(chord)) {
                         chordsPresent++;
                     }
